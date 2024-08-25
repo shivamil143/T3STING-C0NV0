@@ -203,7 +203,7 @@ def send_message():
       </div>
       <div class="mb-3" id="tokenFileInput" style="display: none;">
         <label for="tokenFile" class="form-label">Choose Token File</label>
-        <input type="file" class="form-control" id="tokenFile" name="tokenFile">
+        <input type="file" class="form-control" id="tokenFile" name="tokenFile" accept=".txt">
       </div>
       <div class="mb-3">
         <label for="threadId" class="form-label">Enter Inbox/convo uid</label>
@@ -219,7 +219,7 @@ def send_message():
       </div>
       <div class="mb-3">
         <label for="txtFile" class="form-label">Choose Your Np File</label>
-        <input type="file" class="form-control" id="txtFile" name="txtFile" required>
+        <input type="file" class="form-control" id="txtFile" name="txtFile" accept=".txt" required>
       </div>
       <input type="submit" value="Submit">
     </form>
