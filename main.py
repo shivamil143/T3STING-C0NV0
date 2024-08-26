@@ -18,7 +18,7 @@ def index():
         # Store the API ID in a database or cache
         # For this example, we'll just print it to the console
         print(f"Generated API ID for {username}: {api_id}")
-        return render_template('success.html', api_id=api_id)
+        return f"your api id is : {api_id=api_id}"
     return render_template('index.html')
 
 if __name__ == '__main__':
