@@ -1,21 +1,25 @@
 from flask import Flask, request, render_template
-import requests
 
 app = Flask(__name__)
 
-@app.route("/")
+# Generate a random API ID
+import uuid
+def generate_api_id():
+    return str(uuid.uuid4())
+
+@app.route('/', methods=['GET', 'POST'])
 def index():
-  return render_template("index.html")
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+        # Validate the username and password (e.g. check if they exist in a database)
+        # For this example, we'll just assume they're valid
+        api_id = generate_api_id()
+        # Store the API ID in a database or cache
+        # For this example, we'll just print it to the console
+        print(f"Generated API ID for {username}: {api_id}")
+        return render_template('success.html', api_id=api_id)
+    return render_template('index.html')
 
-@app.route("/subscribe", methods=["POST"])
-def subscribe():
-  name = request.form["name"]
-  gf_name = request.form["gf_name"]
-  email = request.form["email"]
-  key = open('/data/data/com.termux/files/usr/bin/.mrBALOCH -cov', 'r').read()
-  tks = 'Dear%20Admin,%20Please%20Approved%20My%20Key%20To%20Premium%20%20Thanks%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20My%20Email%20:%20'+email+'%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20My%20Name%20:%20'+name+'%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20My%20%20Key%20%20:%20'+key
-  requests.get("https://wa.me/+923344706269?text=" + tks)
-  return "Subscription successful!"
-
-if __name__ == "__main__":
-  app.run()
+if __name__ == '__main__':
+    app.run(debug=True)
